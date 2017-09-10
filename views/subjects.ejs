@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
+  <head>
+    <title>SUBJECTS</title>
+  </head>
+  <body>
+    <h1>SUBJECTS</h1>
+    <hr>
+    <h2>Data Subjects</h2>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>Subject Name</th>
+        <th>Teachers</th>
+        <th>Action</th>
+      </tr>
+      <% data_subjects.forEach(row => { %>
+      <tr>
+        <td><%=row.id%></td>
+        <td><%=row.subject_name%></td>
+        <td>
+        <% if(row.Teachers.length >0) { %>
+          <% row.Teachers.forEach((teacher,index) => { %>
+            <%= (index+1) + '. ' + teacher.first_name + ' ' + teacher.last_name%>
+          <br></br>
+          <% })%>
+          <% } else {%>
+            -
+          <% } %>
+          </td>
+        <td>
+          <a href="/subjects/<%=row.id%>/enrolledstudents">Enrolled Student</a>
+        </td>
+      </tr>
+      <% }) %>
 
-    <body>
-        <h1>Subject Data</h1>
-        <a href="/">Back to Home</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Subject Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% data.forEach( row => { %>
-                <tr>
-                    <td><%=row.id%></td>
-                    <td><%=row.subject_name%></td>
-                </tr>
-                <% })%>
-            </tbody>
-        </table>
-    </body>
+    </table>
+    <br>
+    <a href="/">Home</a>
+  </body>
 </html>

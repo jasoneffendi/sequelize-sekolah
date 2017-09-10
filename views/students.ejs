@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-
-    <body>
-        <h1>Halaman Students</h1>
-        <a href="/">Back to Home</a>
-        <a href="/students/add">Add</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% data.forEach( row => { %>
-                <tr>
-                    <td><%=row.id%></td>
-                    <td><%=row.first_name%></td>
-                    <td><%=row.last_name%></td>
-                    <td><%=row.email%></td>
-                    <td>
-                        <a href="/students/edit/<%=row.id%>">Edit</a>
-                        <a href="/students/delete/<%=row.id%>" onclick="return confirm('do you want to delete this student')">Delete</a>
-                    </td>
-                </tr>
-                <% })%>
-            </tbody>
-        </table>
-    </body>
+  <head>
+    <title>STUDENTS</title>
+  </head>
+  <body>
+    <h1>STUDENTS</h1>
+    <hr>
+    <h2>Data Students</h2>
+    <a href="/students/add"> Add Students</a>
+    <br>
+    <br>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      <% data_students.forEach(row => { %>
+      <tr>
+        <td><%=row.id %></td>
+        <td><%=row.first_name %></td>
+        <td><%=row.last_name %></td>
+        <td><%=row.full_name %></td>
+        <td><%=row.email %></td>
+        <td><a href="/students/<%=row.id%>/addsubject">Add subjects</a>   </td>
+        <td>
+          <a href="/students/edit/<%=row.id%>">EDIT</a> |
+          <a href="/students/delete/<%=row.id%>" onclick="return confirm(' delete this student?')" >DELETE</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <br>
+    <a href="/">Home</a>
+  </body>
 </html>

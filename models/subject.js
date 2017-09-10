@@ -1,13 +1,22 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Subject = sequelize.define('Subject', {
-    subject_name: DataTypes.STRING
+  var Subjects = sequelize.define('Subjects', {
+    subject_name: DataTypes.STRING,
+    TeacherId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        // Subjects.hasMany(models.Teacher)
       }
     }
   });
-  return Subject;
+
+  Subjects.associate = function (models) {
+    Subjects.hasMany(models.Teacher)
+    Subjects.hasMany(models.Conjunction)
+  };
+
+
+  return Subjects;
 };

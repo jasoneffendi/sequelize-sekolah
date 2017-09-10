@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEACHERS</title>
+  </head>
+  <body>
+    <h1>TEACHERS</h1>
+    <hr>
+    <h2>Data Teachers</h2>
+    <table border="1">
+      <tr>
+        <th>Id Teacher</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Options</th>
+      </tr>
+      <% data_teachers.forEach(row => { %>
+      <tr>
+        <td><%=row.id%></td>
+        <td><%=row.first_name%></td>
+        <td><%=row.last_name%></td>
+        <td><%=row.email%></td>
+        <% if(row.SubjectId !== null) {%>
+          <td><%=row.Subject.subject_name%></td>
+        <%} else {%>
+          <td>unassigned</td>
+        <%}%>
+       
+        <td>
+          <a href="/teachers/edit/<%=row.id%>">EDIT</a> |
+          <a href="/teachers/delete/<%=row.id%>">DELETE</a>
+        </td>
+      </tr>
+      <% }) %>
+
+    </table>
+    <br>
+
+    <a href="/teachers/add">ADD Teahcer</a>
+    <br><br>
+    <a href="/">Home</a>
+  </body>
+</html>
