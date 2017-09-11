@@ -4,11 +4,11 @@
   <body>
     <%- include partial/h1.ejs %>
     <%- include partial/menu.ejs %>
-    <p>Student Name : <%= data_conjunction[0].Student.first_name + ' ' + data_conjunction[0].Student.last_name%> </p>
-    <p>Subject : <%= data_conjunction[0].Subject.subject_name %></p>
+    <p>Student Name : <%= data_SubjectStudent[0].Student.first_name + ' ' + data_SubjectStudent[0].Student.last_name%> </p>
+    <p>Subject : <%= data_SubjectStudent[0].Subject.subject_name %></p>
     <p>
       Score: <br>
-      <form class="" action="/subjects/<%= data_conjunction[0].id %>/givescore" method="post">
+      <form class="" action="/subjects/<%= data_SubjectStudent[0].id %>/givescore" method="post">
         <input type="number" name="score" value="" placeholder="type score">
         <input type="submit" name="" value="Add Score" >
       </form>

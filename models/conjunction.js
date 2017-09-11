@@ -12,10 +12,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  Conjunction.associate = function (models) {
-    Conjunction.belongsTo(models.Subjects)
-    Conjunction.belongsTo(models.Student)
-  };
+  // Conjunction.associate = function (models) {
+  //   Conjunction.belongsTo(models.Subjects)
+  //   Conjunction.belongsTo(models.Student)
+  // };
 
   return Conjunction;
 };

@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Subjects.associate = function (models) {
     Subjects.hasMany(models.Teacher)
-    Subjects.hasMany(models.Conjunction)
+    Subjects.belongsToMany(models.Student, {through: 'SubjectStudent'});
   };
 
 

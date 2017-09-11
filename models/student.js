@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Student.associate = function (models) {
-    Student.hasMany(models.Conjunction)
+    Student.belongsToMany(models.Subjects, {through: 'SubjectStudent'})
   };
 
   Student.prototype.get_full_name = function () {

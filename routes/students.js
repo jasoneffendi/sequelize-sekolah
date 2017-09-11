@@ -163,7 +163,7 @@ router.post('/edit/:id', (req, res) => {
   })
  
   router.post('/:id/addsubject', (req, res) => {
-    models.Conjunction.create({
+    models.SubjectStudent.create({
       StudentId: `${req.params.id}`,
       SubjectId: `${req.body.SubjectId}`,
       createdAt: new Date(),

@@ -2,37 +2,33 @@
 <html>
   <%- include partial/head.ejs %>
   <body>
-    <h1><%= data_subjects[0].subject_name%></h1>
     <%- include partial/menu.ejs %>
     <a href="/subjects">Return to Subject List</a>
     <br>
     <table border="1">
-      <tr>
-        <td>Name</td>
-        <td>Score</td>
-        <td>Score By Letter</td>
-      </tr>
-        <!-- <% data_subjects[0].Conjunctions.forEach(row => {  %>
-      <tr>
-        <td><%= row.Student.first_name + ' ' + row.Student.last_name%></td>
-        <td>
-          <% if(row.score !== null) {%>
-            <%= row.score%>
-          <% } else { %>
-            <a href="/subjects/<%= row.id%>/givescore">Give Score</a>
-          <%  } %>
-        </td>
-      </tr>
-      <% }) %> -->
-
-      <% for(var i =0 ; i < data_subjects[0].Conjunctions.length; i++) {%>
-      <tr>
-        <td><%=data_subjects[0].Conjunctions[i].Student.first_name + ' ' + data_subjects[0].Conjunctions[i].Student.last_name%></td>
-        <td><%=data_subjects[0].Conjunctions[i].score%></td>
-        <td><%=data_huruf%></td>
-      </tr>
-      <%}%>
-
-    </table>
+        <tr>
+          <td>Name</td>
+          <td>Score</td>
+          <td>Score by Letter</td>
+        </tr>
+          <% data_subjects.Students.forEach(row => {  %>
+        <tr>
+          <td><%= row.first_name + ' ' + row.last_name%></td>
+          <td>
+            <% if(row.SubjectStudent.score !== null) {%>
+              <%= row.SubjectStudent.score%>
+            <% } else { %>
+              <a href="#">Give Score</a>
+              <!-- /subjects/<%= row.SubjectStudent.id%>/givescore -->
+            <%  } %>
+          </td>
+          <td>
+            <%=row.score_letter %>
+          </td>
+        </tr>
+  
+        <% }) %>
+  
+      </table>
   </body>
 </html>
