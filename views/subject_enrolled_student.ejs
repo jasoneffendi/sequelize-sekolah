@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <%- include partial/head.ejs %>
+  <body>
+    <%- include partial/menu.ejs %>
+    <a href="/subjects">Return to Subject List</a>
+    <br>
+    <table border="1">
+        <tr>
+          <td>Name</td>
+          <td>Score</td>
+          <td>Score by Letter</td>
+        </tr>
+          <% data_subjects.Students.forEach(row => {  %>
+        <tr>
+          <td><%= row.first_name + ' ' + row.last_name%></td>
+          <td>
+            <% if(row.SubjectStudent.score !== null) {%>
+              <%= row.SubjectStudent.score%>
+            <% } else { %>
+              <a href="#">Give Score</a>
+              <!-- /subjects/<%= row.SubjectStudent.id%>/givescore -->
+            <%  } %>
+          </td>
+          <td>
+            <%=row.score_letter %>
+          </td>
+        </tr>
+  
+        <% }) %>
+  
+      </table>
+  </body>
+</html>
