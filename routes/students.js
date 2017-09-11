@@ -9,19 +9,19 @@ router.get('/', (req, res)=>{
     ]
   })
     .then(data_students => {
-      res.render('students', {data_students: data_students})
+      res.render('students', {data_students: data_students, title: "Halaman Students",head: "Students"})
     })
     .catch(err => {
       console.log(err);
     })
 })
 
-router.get('/', (req, res)=>{
-  res.render('students')
-})
+// router.get('/', (req, res)=>{
+//   res.render('students')
+// })
 
 router.get('/add', (req, res)=>{
-  res.render('student_add') // form
+  res.render('student_add', {title: "Halaman Tambah Siswa", head: "ADD STUDENTS"}) // form
 })
 
 router.post('/add', (req, res)=>{
@@ -65,7 +65,7 @@ router.get('/edit/:id/', (req, res) => {
     }
   })
   .then( student => {
-    res.render('student_edit',{student: student})
+    res.render('student_edit',{student: student, title: "Halaman Edit Students", head: "EDIT STUDENTS"})
     // res.send(student)
   })
   .catch(err => {
@@ -127,7 +127,7 @@ router.post('/edit/:id', (req, res) => {
               createdAt: new Date(),
               updatedAt: new Date()
             }]
-            res.render('student_edit',{student: data_temporary, data_error: true})
+            res.render('student_edit',{student: data_temporary, data_error: true, title: "Halaman Edit Students", head: "EDIT STUDENTS"})
           })
           .catch(err => {console.log('err 2' + err)})
         })
@@ -149,7 +149,7 @@ router.post('/edit/:id', (req, res) => {
     .then(student => {
       models.Subjects.findAll()
        .then(subjects => {
-         res.render('student_add_subject', {data_student: student, data_subjects: subjects})
+         res.render('student_add_subject', {data_student: student, data_subjects: subjects, title: "Halaman Add Subject To Student", head: "ADD SUBJECT TO STUDENT"})
          // res.send({data_student: student, options_subject: subjects})
        })
        .catch(err => {

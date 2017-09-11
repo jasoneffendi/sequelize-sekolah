@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>GIVE SCORE</title>
-  </head>
+  <%- include partial/head.ejs %>
   <body>
-    <h1>GIVE SCORE</h1>
+    <%- include partial/h1.ejs %>
+    <%- include partial/menu.ejs %>
     <p>Student Name : <%= data_conjunction[0].Student.first_name + ' ' + data_conjunction[0].Student.last_name%> </p>
     <p>Subject : <%= data_conjunction[0].Subject.subject_name %></p>
     <p>

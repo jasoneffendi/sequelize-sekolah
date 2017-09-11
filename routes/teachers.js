@@ -11,7 +11,7 @@ router.get('/', (req, res)=>{
     })
     .then(data_teachers => {
       // res.send({data_teachers : data_teachers})
-      res.render('teacher/teachers',{data_teachers : data_teachers})
+      res.render('teacher/teachers',{data_teachers : data_teachers, title: "Halaman Teacher",head: "Teacher"})
     })
     .catch(err => {
       console.log(err);
@@ -23,7 +23,7 @@ router.get('/add', (req, res)=>{
       // attributes: { exclude: ['SubjectId','TeacherId'] }
     })
     .then(subjects => {
-      res.render('teacher/teacher_add', {data_subjects: subjects}) // form
+      res.render('teacher/teacher_add', {data_subjects: subjects, title: "Halaman Add Teacher", head: "Add Teachers"}) // form
     })
     .catch(err => {
       console.log(err);
@@ -77,7 +77,7 @@ router.get('/edit/:id/', (req, res) => {
         // attributes: { exclude: ['SubjectId','TeacherId'] }
       })
       .then(subjects => {
-        res.render('teacher/teacher_edit', {teacher: teacher, data_subjects: subjects}) // form
+        res.render('teacher/teacher_edit', {teacher: teacher, data_subjects: subjects, title: "Halaman Edit Teacher",head: "Edit Teachers"}) // form
       })
       .catch(err => {
         console.log(err);

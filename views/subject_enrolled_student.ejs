@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>ENROLLED STUDENT</title>
-  </head>
+  <%- include partial/head.ejs %>
   <body>
     <h1><%= data_subjects[0].subject_name%></h1>
+    <%- include partial/menu.ejs %>
     <a href="/subjects">Return to Subject List</a>
     <br>
     <table border="1">
       <tr>
         <td>Name</td>
         <td>Score</td>
+        <td>Score By Letter</td>
       </tr>
-        <% data_subjects[0].Conjunctions.forEach(row => {  %>
+        <!-- <% data_subjects[0].Conjunctions.forEach(row => {  %>
       <tr>
         <td><%= row.Student.first_name + ' ' + row.Student.last_name%></td>
         <td>
@@ -24,8 +23,15 @@
           <%  } %>
         </td>
       </tr>
+      <% }) %> -->
 
-      <% }) %>
+      <% for(var i =0 ; i < data_subjects[0].Conjunctions.length; i++) {%>
+      <tr>
+        <td><%=data_subjects[0].Conjunctions[i].Student.first_name + ' ' + data_subjects[0].Conjunctions[i].Student.last_name%></td>
+        <td><%=data_subjects[0].Conjunctions[i].score%></td>
+        <td><%=data_huruf%></td>
+      </tr>
+      <%}%>
 
     </table>
   </body>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TEACHERS</title>
-  </head>
+  <!-- <head>
+    <title><%= title%></title>
+  </head> -->
+  <%- include ../partial/head.ejs %>
   <body>
-    <h1>TEACHERS</h1>
+    <%- include ../partial/h1.ejs %>
+    <%- include ../partial/menu.ejs %>
     <hr>
     <h2>Data Teachers</h2>
     <table border="1">
@@ -38,8 +40,8 @@
     </table>
     <br>
 
-    <a href="/teachers/add">ADD Teahcer</a>
+    <a href="/teachers/add">Add Teacher</a>
     <br><br>
-    <a href="/">Home</a>
+    <%- include ../partial/home.ejs %>
   </body>
 </html>

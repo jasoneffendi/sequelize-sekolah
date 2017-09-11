@@ -12,7 +12,7 @@ let subjects = require('./routes/subjects.js')
 let students = require('./routes/students.js')
 
 app.get('/', (req, res)=>{
-  res.render('index')
+  res.render('index', {title: "Halaman Utama"})
 })
 
 // ===================== routing =================================//
