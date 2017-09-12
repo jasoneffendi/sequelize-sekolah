@@ -4,7 +4,8 @@
   "description": "/** /** EXPRESS CONTACTS-GROUPS --------------------------- Buatlah sebuah aplikasi sederhana menggunakan Express JS dan SQLITE3 untuk menampilkan list Contact, Group, Addresses dan Profiles menambah data Contact, Group, Addresses dan Profiles , melakukan edit data dan delete data berdasarkan data yang dipilih",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
