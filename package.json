@@ -23,6 +23,7 @@
     "express-session": "^1.15.5",
     "pg": "^7.3.0",
     "sequelize": "^4.8.0",
+    "sequelize-cli": "^3.0.0-2",
     "sqlite3": "^3.1.9"
   }
 }
