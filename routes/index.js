@@ -6,7 +6,7 @@ const decrypt = require('../helpers/hasher')
 
 router.get('/', (req, res)=>{ 
     if(req.session.hasLogin) {
-        res.render('index', {title: 'Index', session: req.session})
+        res.render('index', {title: 'Index', session: req.session, head: 'SCHOOL INTERFACE'})
     } else {
         res.redirect('/login')
     }

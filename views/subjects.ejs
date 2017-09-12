@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <%- include partial/head.ejs %>
   <body>
     <%- include partial/h1.ejs %>
     <%- include partial/menu.ejs %>
     <hr>
     <h2>Data Subjects</h2>
-    <table border="1">
+    <table border="1" class="w3-table-all w3-hoverable">
       <tr>
           <th>Id</th>
           <th>Subject Name</th>
@@ -28,12 +29,8 @@
             <% } %>
           </td>
           <td>
-            <a href="/subjects/<%=row.id%>/enrolledstudents">Enroled Student</a>
+            <a href="/subjects/<%=row.id%>/enrolledstudents">Enrolled Student</a>
           </td>
-          <!-- <td>
-            <a href="/subjects/edit/<%=row.id%>">EDIT</a> |
-            <a href="/subjects/delete/<%=row.id%>" onclick="return confirm(' delete this subject?')" >DELETE</a>
-          </td> -->
         </tr>
         <% }) %>
   

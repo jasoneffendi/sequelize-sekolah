@@ -3,13 +3,14 @@
   <!-- <head>
     <title><%= title%></title>
   </head> -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <%- include ../partial/head.ejs %>
   <body>
     <%- include ../partial/h1.ejs %>
     <%- include ../partial/menu.ejs %>
     <hr>
     <h2>Data Teachers</h2>
-    <table border="1">
+    <table border="1" class="w3-table-all w3-hoverable">
       <tr>
         <th>Id Teacher</th>
         <th>First Name</th>
@@ -40,8 +41,7 @@
     </table>
     <br>
 
-    <a href="/teachers/add">Add Teacher</a>
-    <br><br>
+    <a href="/teachers/add" class="w3-button w3-block w3-teal">Add Teacher</a>
     <%- include ../partial/home.ejs %>
   </body>
 </html>

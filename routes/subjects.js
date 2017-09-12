@@ -38,7 +38,7 @@ router.get('/:id/enrolledstudents', (req, res) => {
             student.score_letter = score_letter(student.SubjectStudent.score)
             count++
             if(count >= data_subjects[0].Students.length){
-              res.render('subject_enrolled_student', {data_subjects: data_subjects[0], title: "Enrolled Students", session: req.session})
+              res.render('subject_enrolled_student', {data_subjects: data_subjects[0], title: "Enrolled Students", session: req.session, head: "Enrolled Students"})
             }
           })
         } else {
