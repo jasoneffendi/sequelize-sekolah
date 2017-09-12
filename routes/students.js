@@ -2,6 +2,14 @@ let express = require('express');
 let router = express.Router();
 const models = require('../models')
 
+router.use((req,res,next) => {
+  if(req.session.hasLogin && req.session.user.role !== 'teacher') {
+    next()
+  } else {
+    res.redirect('/login')
+  }
+})
+
 router.get('/', (req, res)=>{
   models.Student.findAll({
     order: [

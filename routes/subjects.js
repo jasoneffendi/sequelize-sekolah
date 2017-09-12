@@ -1,15 +1,23 @@
 let express = require('express');
 let router = express.Router();
 const models = require('../models')
-const convert = require('../helpers/converScore.js')
 const score_letter = require('../helpers/score_letter.js')
+
+
+router.use((req,res,next) => {
+  if(req.session.hasLogin && req.session.user.role !== 'teacher') {
+    next()
+  } else {
+    res.render('accessDenied', {title: 'ACCES DENIED'})
+  }
+})
 
 router.get('/', (req, res)=>{
   models.Subjects.findAll({
     include :[{model: models.Teacher}]
   })
     .then(data_subjects => {
-      res.render('subjects', {data_subjects: data_subjects, title: "Halaman Subjects", head: "Subjects"})
+      res.render('subjects', {data_subjects: data_subjects, title: "Halaman Subjects", head: "Subjects"})  
     })
 })
 
@@ -31,7 +39,8 @@ router.get('/:id/enrolledstudents', (req, res) => {
             student.score_letter = score_letter(student.SubjectStudent.score)
             count++
             if(count >= data_subjects[0].Students.length){
-                res.render('subject_enrolled_student', {data_subjects: data_subjects[0], title: "Enrolled Students"})
+              res.send(data_subjects[0].Students[0])  
+              // res.render('subject_enrolled_student', {data_subjects: data_subjects[0], title: "Enrolled Students"})
             }
           })
         } else {
@@ -56,6 +65,7 @@ router.get('/:id/givescore', (req, res) => {
     })
     .then(data_SubjectStudent => {
       res.render('give_score',{data_SubjectStudent: data_SubjectStudent, title: "Halaman Memberi Nilai",head: "GIVE SCORE"})
+      // res.send(data_SubjectStudent)
     })
     .catch(err => {
       console.log(err);
