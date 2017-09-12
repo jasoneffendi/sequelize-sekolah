@@ -17,7 +17,7 @@ router.get('/', (req, res)=>{
     ]
   })
     .then(data_students => {
-      res.render('students', {data_students: data_students, title: "Halaman Students",head: "Students"})
+      res.render('students', {data_students: data_students, title: "Halaman Students",head: "Students", session: req.session})
     })
     .catch(err => {
       console.log(err);
@@ -29,7 +29,7 @@ router.get('/', (req, res)=>{
 // })
 
 router.get('/add', (req, res)=>{
-  res.render('student_add', {title: "Halaman Tambah Siswa", head: "ADD STUDENTS"}) // form
+  res.render('student_add', {title: "Halaman Tambah Siswa", head: "ADD STUDENTS", session: req.session}) // form
 })
 
 router.post('/add', (req, res)=>{
@@ -73,7 +73,7 @@ router.get('/edit/:id/', (req, res) => {
     }
   })
   .then( student => {
-    res.render('student_edit',{student: student, title: "Halaman Edit Students", head: "EDIT STUDENTS"})
+    res.render('student_edit',{student: student, title: "Halaman Edit Students", head: "EDIT STUDENTS", session: req.session})
     // res.send(student)
   })
   .catch(err => {
@@ -135,7 +135,7 @@ router.post('/edit/:id', (req, res) => {
               createdAt: new Date(),
               updatedAt: new Date()
             }]
-            res.render('student_edit',{student: data_temporary, data_error: true, title: "Halaman Edit Students", head: "EDIT STUDENTS"})
+            res.render('student_edit',{student: data_temporary, data_error: true, title: "Halaman Edit Students", head: "EDIT STUDENTS", session: req.session})
           })
           .catch(err => {console.log('err 2' + err)})
         })
@@ -157,7 +157,7 @@ router.post('/edit/:id', (req, res) => {
     .then(student => {
       models.Subjects.findAll()
        .then(subjects => {
-         res.render('student_add_subject', {data_student: student, data_subjects: subjects, title: "Halaman Add Subject To Student", head: "ADD SUBJECT TO STUDENT"})
+         res.render('student_add_subject', {data_student: student, data_subjects: subjects, title: "Halaman Add Subject To Student", head: "ADD SUBJECT TO STUDENT", session: req.session})
          // res.send({data_student: student, options_subject: subjects})
        })
        .catch(err => {
@@ -185,7 +185,10 @@ router.post('/edit/:id', (req, res) => {
     })
   })
 
-
+  router.get('/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('/login')
+})
 
 
 module.exports = router

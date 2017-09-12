@@ -1,33 +1,71 @@
-<!-- <p>
-    <a href="/teachers">Teachers</a>
-    <a href="/subjects">Subjects</a>
-    <a href="/students">Students</a>
-</p> -->
-
-<p>
-        <div class="dropdown">
-            <button class="dropbtn">Subjects</button>
-            <div class="dropdown-content">
-                <a href="/subjects">Subjects List</a>
+<%if(session.user.role === "Teacher") {%>
+    <p>
+            <div class="dropdown">
+                <button class="dropbtn">Subjects</button>
+                <div class="dropdown-content">
+                    <a href="/subjects">Subjects List</a>
+                </div>
             </div>
-        </div>
-
-        <div class="dropdown">
-            <button class="dropbtn">Teachers</button>
-            <div class="dropdown-content">
-                <a href="/teachers">Teachers List</a>
-                <a href="/teachers/add">Add a Teacher</a>
+    
+            <div class="dropdown">
+                <button class="dropbtn">Teachers</button>
+                <div class="dropdown-content">
+                    <a href="/teachers">Teachers List</a>
+                    <a href="/teachers/add">Add a Teacher</a>
+                </div>
             </div>
-        </div>
+    
+            <div class="dropdown">
+                <button class="dropbtn">Students</button>
+                <div class="dropdown-content">
+                    <a href="/students">Students List</a>
+                    <a href="/students/add">Add a Student</a>
+                </div>
+            </div>
+            <a href='/logout' class='dropbtn'>Logout</a>
+    </p>
+<%}%>
 
-        <div class="dropdown">
+<%if(session.user.role === "Academic") {%>
+    <p>
+            <div class="dropdown">
+                <button class="dropbtn">Subjects</button>
+                <div class="dropdown-content">
+                    <a href="/subjects">Subjects List</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <button class="dropbtn">Teachers</button>
+                <div class="dropdown-content">
+                    <a href="/teachers">Teachers List</a>
+                </div>
+            </div>
+            <a href='/logout' class='dropbtn'>Logout</a>
+    </p>
+<%}%>
+
+<%if(session.user.role === "Headmaster") {%>
+    <p>    
+            <div class="dropdown">
+                <button class="dropbtn">Teachers</button>
+                <div class="dropdown-content">
+                    <a href="/teachers">Teachers List</a>
+                    <a href="/teachers/add">Add a Teacher</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
                 <button class="dropbtn">Students</button>
                 <div class="dropdown-content">
                     <a href="/students">Students List</a>
                     <a href="/students/add">Add a Student</a>>
                 </div>
             </div>
-</p>
+            <a href='/logout' class='dropbtn'>Logout</a>
+    </p>
+<%}%>
+
 <style>
 .dropbtn {
     background-color: grey;

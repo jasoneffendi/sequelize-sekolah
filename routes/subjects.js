@@ -17,7 +17,7 @@ router.get('/', (req, res)=>{
     include :[{model: models.Teacher}]
   })
     .then(data_subjects => {
-      res.render('subjects', {data_subjects: data_subjects, title: "Halaman Subjects", head: "Subjects"})  
+      res.render('subjects', {data_subjects: data_subjects, title: "Halaman Subjects", head: "Subjects", session: req.session})  
     })
 })
 
@@ -30,7 +30,6 @@ router.get('/:id/enrolledstudents', (req, res) => {
         include: [
           {model: models.Student}
         ],
-        // order: [[models.SubjectStudent, models.Student, 'first_name']]
       })
       .then(data_subjects => {
         if(data_subjects[0].Students.length > 0) {
@@ -39,8 +38,7 @@ router.get('/:id/enrolledstudents', (req, res) => {
             student.score_letter = score_letter(student.SubjectStudent.score)
             count++
             if(count >= data_subjects[0].Students.length){
-              res.send(data_subjects[0].Students[0])  
-              // res.render('subject_enrolled_student', {data_subjects: data_subjects[0], title: "Enrolled Students"})
+              res.render('subject_enrolled_student', {data_subjects: data_subjects[0], title: "Enrolled Students", session: req.session})
             }
           })
         } else {
@@ -64,8 +62,7 @@ router.get('/:id/givescore', (req, res) => {
       ]
     })
     .then(data_SubjectStudent => {
-      res.render('give_score',{data_SubjectStudent: data_SubjectStudent, title: "Halaman Memberi Nilai",head: "GIVE SCORE"})
-      // res.send(data_SubjectStudent)
+      res.render('give_score',{data_SubjectStudent: data_SubjectStudent, title: "Halaman Memberi Nilai",head: "GIVE SCORE", session: req.session})
     })
     .catch(err => {
       console.log(err);
@@ -89,7 +86,10 @@ router.post('/:id/givescore', (req, res) => {
 })
 
 
-
+router.get('/logout', (req, res) => {
+  req.session.destroy()
+  res.redirect('/login')
+})
 
 
 module.exports = router
